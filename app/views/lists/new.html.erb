@@ -1,5 +1,14 @@
 <h1>新規投稿</h1>
 <%= form_with model: @list, local: true do |f| %>
+<% if @list.errors.any? %>
+  <%= @list.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @list.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
   <h4>タイトル</h4>
   <%= f.text_field :title %>
 
